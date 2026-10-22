@@ -1,7 +1,15 @@
 package ex1;
 
+/**
+ * Compares synchronized and non-synchronized counters using two threads.
+ */
 public class Exercise1 {
 
+    /**
+     * Runs concurrent increments and decrements, then prints the results.
+     *
+     * @throws InterruptedException if interrupted while waiting for either thread
+     */
     static void main() throws InterruptedException {
         Counter counter = new Counter();
         SynchronizedCounter synchronizedCounter = new SynchronizedCounter();
