@@ -10,12 +10,24 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * Serves files from ex2/www over HTTP using a separate thread for each client.
+ *
+ * @author Avinash Batchala
+ * @author Bhargav Parvatha
+ * @author Nithin Gangavarapu
+ */
 public class HttpServer {
     private static final int PORT = 8080;
     private static final Path ROOT =
             Path.of("ex2/www").toAbsolutePath().normalize();
 
-    public static void main(String[] args) throws IOException {
+    /**
+     * Starts the HTTP server on port 8080.
+     *
+     * @throws IOException if the server cannot listen for or accept connections
+     */
+    static void main() throws IOException {
         try (ServerSocket server = new ServerSocket(PORT)) {
             System.out.println("Listening on port " + PORT);
 
@@ -27,6 +39,11 @@ public class HttpServer {
         }
     }
 
+    /**
+     * Handles one GET request and closes the client connection.
+     *
+     * @param socket the connected client socket
+     */
     private static void handleClient(Socket socket) {
         try (socket) {
             socket.setSoTimeout(60000);
@@ -98,6 +115,15 @@ public class HttpServer {
         }
     }
 
+    /**
+     * Sends a plain-text HTTP response.
+     *
+     * @param out the client output stream
+     * @param status the HTTP status code
+     * @param reason the HTTP status description
+     * @param message the response body
+     * @throws IOException if the response cannot be written
+     */
     private static void send(
             OutputStream out, int status,
             String reason, String message) throws IOException {

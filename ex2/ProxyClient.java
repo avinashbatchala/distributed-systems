@@ -4,8 +4,23 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.*;
 
+/**
+ * Sends HTTP GET requests through an HTTP proxy and prints the response.
+ *
+ * @author Avinash Batchala
+ * @author Bhargav Parvatha
+ * @author Nithin Gangavarapu
+ */
 public class ProxyClient {
 
+    /**
+     * Requests a URL through a proxy and prints its status and response body.
+     *
+     * @param urlString the URL to request
+     * @param proxyHost the proxy hostname or IP address
+     * @param proxyPort the proxy port
+     * @throws IOException if the connection or request fails
+     */
     public static void request(
             String urlString,
             String proxyHost,

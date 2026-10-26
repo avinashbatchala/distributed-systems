@@ -3,7 +3,9 @@ package ex1;
 /**
  * A mutable integer counter. Not thread-safe.
  *
- * @author Avinash Batchala, Bhargav Parvatha, Nithin Kumar
+ * @author Avinash Batchala
+ * @author Bhargav Parvatha
+ * @author Nithin Gangavarapu
  */
 class Counter {
 

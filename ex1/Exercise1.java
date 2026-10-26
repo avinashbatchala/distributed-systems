@@ -2,6 +2,10 @@ package ex1;
 
 /**
  * Compares synchronized and non-synchronized counters using two threads.
+ * <p>
+ * * @author Avinash Batchala
+ * * @author Bhargav Parvatha
+ * * @author Nithin Gangavarapu
  */
 public class Exercise1 {
 

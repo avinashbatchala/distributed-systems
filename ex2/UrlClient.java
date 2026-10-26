@@ -6,8 +6,21 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 
+/**
+ * Sends HTTP GET requests using HttpURLConnection and prints the response.
+ *
+ * @author Avinash Batchala
+ * @author Bhargav Parvatha
+ * @author Nithin Gangavarapu
+ */
 public class UrlClient {
 
+    /**
+     * Requests a URL and prints its status and response body.
+     *
+     * @param urlString the URL to request
+     * @throws IOException if the connection or request fails
+     */
     public static void request(String urlString) throws IOException {
 
         URL url = URI.create(urlString).toURL();

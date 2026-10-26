@@ -3,7 +3,9 @@ package ex1;
 /**
  * A thread-safe integer counter using synchronized methods.
  *
- * @author Avinash Batchala, Bhargav Parvatha, Nithin Kumar
+ * @author Avinash Batchala
+ * @author Bhargav Parvatha
+ * @author Nithin Gangavarapu
  */
 public class SynchronizedCounter {
 
