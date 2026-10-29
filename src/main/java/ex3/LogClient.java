@@ -47,7 +47,6 @@ public class LogClient {
             socket.getOutputStream().flush();
         }
 
-        System.out.println("Log message sent: " + text);
-        System.out.println(message.getTimestamp());
+        System.out.println("Log message sent: \n" + message);
     }
 }
