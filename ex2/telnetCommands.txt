@@ -1,0 +1,17 @@
+1. 200
+telnet localhost 8080
+GET /index.html HTTP/1.1
+Host: localhost:8080
+
+
+2. 404
+telnet localhost 8080
+GET /does-not-exist.html HTTP/1.1
+Host: localhost:8080
+
+3. 403
+telnet localhost 8080
+GET /../ex2/HttpServer.java HTTP/1.1
+Host: localhost:8080
+
+

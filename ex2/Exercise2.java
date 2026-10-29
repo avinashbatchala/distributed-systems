@@ -43,7 +43,11 @@ public class Exercise2 {
      * @throws IOException if socket communication fails
      */
     static void httpClient() throws IOException {
-        HttpClient.request(HOST, PORT, PATH);
+        HttpClient.request(HOST, PORT, PATH); //200
+        //  HttpClient.request(HOST, PORT, "/../ex2/HttpServer.java"); // 403
+        //  HttpClient.request(HOST, PORT, PATH + "1"); // 404
+        //  HttpClient.request("stud.fh-wedel.de", 80, "/");
+        //   HttpClient.request("example.com", 80, "/");
     }
 
     /**
@@ -57,7 +61,11 @@ public class Exercise2 {
      * @throws IOException if the HTTP request fails
      */
     static void urlClient() throws IOException {
-        UrlClient.request("http://" + HOST + ":" + PORT + PATH);
+        UrlClient.request("http://" + HOST + ":" + PORT + PATH); //200
+        //    UrlClient.request("http://" + HOST + ":" + PORT + "/../ex2/HttpServer.java"); // 403
+        // UrlClient.request("http://" + HOST + ":" + PORT + PATH + "1"); // 404
+        // UrlClient.request("http://stud.fh-wedel.de:80/");
+        //   UrlClient.request("http://example.com:80/");
     }
 
     /**
