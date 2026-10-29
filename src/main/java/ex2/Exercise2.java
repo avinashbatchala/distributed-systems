@@ -27,8 +27,8 @@ public class Exercise2 {
      */
     static void main() throws Exception {
         httpClient();
-        urlClient();
-        // proxyClient();
+      // urlClient();
+       // proxyClient();
     }
 
     /**
@@ -61,11 +61,11 @@ public class Exercise2 {
      * @throws IOException if the HTTP request fails
      */
     static void urlClient() throws IOException {
-        UrlClient.request("http://" + HOST + ":" + PORT + PATH); //200
-        //    UrlClient.request("http://" + HOST + ":" + PORT + "/../ex2/HttpServer.java"); // 403
+       // UrlClient.request("http://" + HOST + ":" + PORT + PATH); //200
+        // UrlClient.request("http://" + HOST + ":" + PORT + "/../ex2/HttpServer.java"); // 403
         // UrlClient.request("http://" + HOST + ":" + PORT + PATH + "1"); // 404
         // UrlClient.request("http://stud.fh-wedel.de:80/");
-        //   UrlClient.request("http://example.com:80/");
+         UrlClient.request("http://example.com:80/");
     }
 
     /**

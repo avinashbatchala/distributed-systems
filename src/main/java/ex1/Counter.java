@@ -16,18 +16,14 @@ class Counter {
      * Increases the counter by one.
      */
     public void increment() {
-        int b = c;
-        b = b + 1;
-        c = b;
+        c++;
     }
 
     /**
      * Decreases the counter by one.
      */
     public void decrement() {
-        int d = c;
-        d = d - 1;
-        c = d;
+       c--;
     }
 
     /**

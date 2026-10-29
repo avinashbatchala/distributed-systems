@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,8 +21,27 @@ import java.nio.file.Path;
  */
 public class HttpServer {
     private static final int PORT = 8080;
-    private static final Path ROOT =
-            Path.of("ex2/www").toAbsolutePath().normalize();
+    private static final Path ROOT = webRoot();
+
+    /**
+     * Locates the document root on the classpath.
+     *
+     * @return the normalized path to the web root directory
+     */
+    private static Path webRoot() {
+        URL url = HttpServer.class.getResource("/ex2/www");
+        if (url == null) {
+            throw new IllegalStateException(
+                    "Web root /ex2/www not found on classpath");
+        }
+
+        try {
+            return Path.of(url.toURI()).toAbsolutePath().normalize();
+        } catch (URISyntaxException e) {
+            throw new IllegalStateException(
+                    "Invalid web root URL: " + url, e);
+        }
+    }
 
     /**
      * Starts the HTTP server on port 8080.

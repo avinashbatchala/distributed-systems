@@ -1,0 +1,23 @@
+
+syntax = "proto3";
+
+package ex3;
+
+option java_package = "ex3.generated";
+option java_multiple_files = true;
+
+message LogMessage {
+
+  enum Severity {
+    DEBUG = 0;
+    INFO = 1;
+    WARN = 2;
+    ERROR = 3;
+    FATAL = 4;
+  }
+
+  int64 timestamp = 1;
+  optional string source = 2;
+  Severity severity = 3;
+  string message = 4;
+}

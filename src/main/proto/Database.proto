@@ -1,0 +1,44 @@
+
+syntax = "proto3";
+
+package ex3;
+
+option java_package = "ex3.generated";
+option java_multiple_files = true;
+
+message DatabaseRequest {
+
+  enum Operation {
+    UNKNOWN = 0;
+    GET_RECORD = 1;
+    ADD_RECORD = 2;
+    GET_SIZE = 3;
+  }
+
+  Operation operation = 1;
+
+  oneof arguments {
+    GetRecordRequest get_record = 2;
+    AddRecordRequest add_record = 3;
+    GetSizeRequest get_size = 4;
+  }
+}
+
+message GetRecordRequest {
+  int32 index = 1;
+}
+
+message AddRecordRequest {
+  int32 index = 1;
+  string value = 2;
+}
+
+message GetSizeRequest {
+}
+
+message DatabaseResponse {
+  bool success = 1;
+  optional string record = 2;
+  int32 size = 3;
+  string error = 4;
+}
