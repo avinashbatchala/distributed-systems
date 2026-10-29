@@ -1,4 +1,3 @@
-
 package ex3;
 
 import ex3.generated.DatabaseRequest;
@@ -10,11 +9,24 @@ import java.net.Socket;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Serves database requests over TCP using protobuf messages.
+ *
+ * @author Avinash Batchala
+ * @author Bhargav Parvatha
+ * @author Nithin Gangavarapu
+ */
 public class DatabaseServer {
 
     private static final Map<Integer, String> records =
             new ConcurrentHashMap<>();
 
+    /**
+     * Starts the server on port 9091 or the port given as the first argument.
+     *
+     * @param args optional port number
+     * @throws IOException if the server cannot listen for connections
+     */
     public static void main(String[] args) throws IOException {
         int port = args.length > 0
                 ? Integer.parseInt(args[0]) : 9091;
@@ -29,6 +41,11 @@ public class DatabaseServer {
         }
     }
 
+    /**
+     * Handles one client request.
+     *
+     * @param socket the connected client socket
+     */
     private static void handle(Socket socket) {
         try (socket) {
             socket.setSoTimeout(10000);
@@ -49,6 +66,12 @@ public class DatabaseServer {
         }
     }
 
+    /**
+     * Executes a request and builds the response.
+     *
+     * @param request the request to execute
+     * @return the response
+     */
     private static DatabaseResponse execute(DatabaseRequest request) {
 
         DatabaseResponse.Builder response =
@@ -101,6 +124,12 @@ public class DatabaseServer {
         return response.build();
     }
 
+    /**
+     * Creates an error response.
+     *
+     * @param message the error message
+     * @return the error response
+     */
     private static DatabaseResponse error(String message) {
         return DatabaseResponse.newBuilder()
                 .setSuccess(false)

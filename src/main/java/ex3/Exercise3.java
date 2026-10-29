@@ -1,10 +1,22 @@
-
 package ex3;
 
 import ex3.generated.LogMessage;
 
+/**
+ * Sends sample log and database requests to the Exercise 3 servers.
+ *
+ * @author Avinash Batchala
+ * @author Bhargav Parvatha
+ * @author Nithin Gangavarapu
+ */
 public class Exercise3 {
 
+    /**
+     * Sends two log messages and queries the database server.
+     *
+     * @param args unused
+     * @throws Exception if a client call fails
+     */
     public static void main(String[] args) throws Exception {
 
         String host = "localhost";

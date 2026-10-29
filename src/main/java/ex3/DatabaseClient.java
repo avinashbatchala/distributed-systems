@@ -1,4 +1,3 @@
-
 package ex3;
 
 import ex3.generated.*;
@@ -8,16 +7,36 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+/**
+ * Client for the protobuf-based database server.
+ *
+ * @author Avinash Batchala
+ * @author Bhargav Parvatha
+ * @author Nithin Gangavarapu
+ */
 public class DatabaseClient {
 
     private final String host;
     private final int port;
 
+    /**
+     * Creates a client for the given server.
+     *
+     * @param host server host
+     * @param port server port
+     */
     public DatabaseClient(String host, int port) {
         this.host = host;
         this.port = port;
     }
 
+    /**
+     * Sends a request and returns the server response.
+     *
+     * @param request the request to send
+     * @return the server response
+     * @throws IOException if the connection or request fails
+     */
     private DatabaseResponse call(DatabaseRequest request)
             throws IOException {
 
@@ -42,6 +61,13 @@ public class DatabaseClient {
         }
     }
 
+    /**
+     * Stores a record on the server.
+     *
+     * @param index record key
+     * @param value record value
+     * @throws IOException if the request fails
+     */
     public void addRecord(int index, String value)
             throws IOException {
 
@@ -64,6 +90,13 @@ public class DatabaseClient {
         System.out.println("Added: " + index + " -> " + value);
     }
 
+    /**
+     * Returns a record, or {@code null} if it does not exist.
+     *
+     * @param index record key
+     * @return the stored value, or {@code null}
+     * @throws IOException if the request fails
+     */
     public String getRecord(int index) throws IOException {
 
         DatabaseRequest request =
@@ -87,6 +120,12 @@ public class DatabaseClient {
         return response.hasRecord() ? response.getRecord() : null;
     }
 
+    /**
+     * Returns the number of stored records.
+     *
+     * @return the record count
+     * @throws IOException if the request fails
+     */
     public int getSize() throws IOException {
 
         DatabaseRequest request =
