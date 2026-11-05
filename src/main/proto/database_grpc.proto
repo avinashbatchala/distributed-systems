@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package ex4;
+
+option java_package = "ex4.generated";
+option java_multiple_files = true;
+option java_outer_classname = "DatabaseGrpcProto";
+
+
+service DataBase {
+  rpc getRecord(GetRecordRequest) returns (GetRecordResponse);
+  rpc addRecord(AddRecordRequest) returns (AddRecordResponse);
+  rpc getSize(GetSizeRequest) returns (GetSizeResponse);
+}
+
+message GetRecordRequest {
+  int32 index = 1;
+}
+
+message GetRecordResponse {
+  bool found = 1;
+  string record = 2;
+}
+
+message AddRecordRequest {
+  int32 index = 1;
+  string record = 2;
+}
+
+message AddRecordResponse {
+  bool success = 1;
+}
+
+message GetSizeRequest {}
+
+message GetSizeResponse {
+  int32 size = 1;
+}
